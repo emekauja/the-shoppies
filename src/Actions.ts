@@ -6,7 +6,7 @@ export const setSearchFilter = (filterValue: string) => {
 }
 
 //Fetch DATA from API
-export const fetchMovies = (queryValue: string) => async (dispatch: any) => {
+export const fetchDataAction = async (queryValue: string, dispatch: any) => {
   const URL = `https://www.omdbapi.com/?apikey=d3e1b3bd&type=movie&s=${queryValue}`
 
   dispatch({
