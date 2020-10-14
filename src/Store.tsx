@@ -49,7 +49,7 @@ function reducer(state:IState, action:IAction): IState {
         nominated: false,
         nominees: [...state.nominees, action.payload],
       } 
-    case 'REMOVE_FAV':
+    case 'REMOVE_NOMINEE':
       return {
         ...state,
         isLoading: false,

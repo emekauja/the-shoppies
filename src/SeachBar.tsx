@@ -22,6 +22,7 @@ export const SeachBar: React.FC<SeachBarProps> = ({ getQuery }) => {
             placeholder="search movies"
             value={movieTitle}
             onChange={(e) => onChange(e.target.value)}
+            autoFocus
           />
         </form>
       </section>

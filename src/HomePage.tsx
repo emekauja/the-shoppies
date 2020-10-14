@@ -1,29 +1,38 @@
 import React, { useEffect } from 'react'
 import { Store } from './Store'
-import { fetchDataAction, setSearchFilter } from './Actions'
-import { MovieItems } from './MovieItems'
-import { OMDbMovie } from './interfaces'
+import { fetchDataAction, setSearchFilter, notimateMovieAction } from './Actions'
+//import { MovieItems } from './MovieItems'
+import { /* OMDbMovie, */ IMovieProps } from './interfaces'
+import { MovieGrid } from './MovieGrid'
 
 
 
 //interface HomePageProps {}
 
-const HomePage: React.FC = () => {
+function HomePage() {
   //const { fetchDataAction, setSearchFilter } = actions
 
   const { state, dispatch } = React.useContext(Store)
   const queryValue: string = state.queryValue
-  const movies: Array<OMDbMovie> = state.movieList
+  //const movies: Array<OMDbMovie> = state.movieList
+  //const nominatedMovies = state.nominees
 
   const handleSearchChange = (evt: any) => {
     const { value } = evt.target
     dispatch(setSearchFilter(value))
   }
 
-
   useEffect(() => {
     fetchDataAction(queryValue, dispatch)
   }, [dispatch, queryValue])
+
+  
+  const props: IMovieProps = {
+    movies: state.movieList,
+    notimateMovieAction,
+    nominees: state.nominees,
+    store: { state, dispatch }
+  }
     return (
       <section className="search">
       <form>
@@ -33,27 +42,12 @@ const HomePage: React.FC = () => {
           placeholder="search movies"
           value={queryValue}
           onChange={handleSearchChange}
+          autoFocus
         />
       </form>
       <div className="results">
           <h4>Results for: {`"${queryValue}"`}</h4>
-          <ul>
-            {
-              state.isLoading
-                ? (<p style={{
-                  fontSize: "30px",
-                  color: "#c1c1c1",
-                }}>Loading...</p>)
-                : movies.length === 0 ?
-                  (<p style={{
-                    fontSize: "20px",
-                    color: "#c1c1c1",
-                  }}>Please search movie above!</p>)
-                  : (movies && movies.map(movie => (
-                    <MovieItems key={movie.imdbID} movie={movie} /* nominatedMovies={nominatedMovies} */ />
-                  )))
-            }
-          </ul>
+          <MovieGrid {...props} />
         </div>
     </section>
     );
