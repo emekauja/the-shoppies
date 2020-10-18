@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import {StoreProvider} from './Store'
-import { Router, RouterComponentProps } from '@reach/router'
+import { Router, RouteComponentProps } from '@reach/router'
 import HomePage from './HomePage';
 import NominatedPage from './NominatedPage';
 
 
-const RouterPage = (props: {pageComponent: JSX.Element} & RouterComponentProps) => props.pageComponent
+const RouterPage = (props: {pageComponent: JSX.Element} & RouteComponentProps) => props.pageComponent
 
 ReactDOM.render(
     <StoreProvider>
