@@ -3,18 +3,25 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import {StoreProvider} from './Store'
-import * as serviceWorker from './serviceWorker';
+import { Router, RouterComponentProps } from '@reach/router'
+import HomePage from './HomePage';
+import NominatedPage from './NominatedPage';
+
+
+const RouterPage = (props: {pageComponent: JSX.Element} & RouterComponentProps) => props.pageComponent
 
 ReactDOM.render(
-  <React.StrictMode>
     <StoreProvider>
-      <App />
-    </StoreProvider>
-  </React.StrictMode>,
+      <Router>
+        <App path='/'>
+          <RouterPage pageComponent={<HomePage />} path='/' />
+          <RouterPage pageComponent={<NominatedPage />} path='/nominated' />
+        </App>
+      </Router>
+    </StoreProvider>,
   document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();

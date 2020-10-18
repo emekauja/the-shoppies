@@ -1,13 +1,12 @@
 import React from 'react';
 //import axios from 'axios';
 import './App.css';
-import HomePage from './HomePage';
 //import { SeachBar } from './SeachBar';
 //import { /* Movie, */ OMDbMovie } from './interfaces'
 //import { MovieGrid } from './MovieGrid' 
 
 
-function App() {
+function App(props: any): JSX.Element {
 /*   const [movies, setMovies] = useState<OMDbMovie[]>([])
   const [query, setQuery] = useState<string>('')
   //const key = 'd3e1b3bd'
@@ -66,11 +65,9 @@ function App() {
 
 
   return (
-    <div className="App">
-      <HomePage />
-{/*         <SeachBar getQuery={(q: string) => setQuery(q)} />
-        <MovieGrid movies={movies} /> */}
-    </div>
+    <React.Fragment>
+      {props.children}
+    </React.Fragment>
   );
 }
 

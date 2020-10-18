@@ -54,7 +54,7 @@ function reducer(state:IState, action:IAction): IState {
         ...state,
         isLoading: false,
         nominated: false,
-        nominees: action.payload /* state.nominees.filter(movie => movie.imdbID !== action.payload) */
+        nominees: state.nominees.filter(movie => movie.imdbID !== action.payload)
       }
       case 'SET_NOMINATED_MOVIE_FAILURE':
       case 'REMOVE_NOMINATED_MOVIE_FAILURE':

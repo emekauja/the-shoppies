@@ -1,4 +1,4 @@
-import { IState, IAction, IMovie, OMDbMovie } from './interfaces'
+import { IAction, OMDbMovie } from './interfaces'
 
 export const setSearchFilter = (filterValue: string) => {
   return {
@@ -64,7 +64,7 @@ export const setNominatedMovie = (movie: OMDbMovie, dispatch: any) => {
   }
 }
 
-export const removeNominatedMovie = (movie: IMovie, dispatch: any) => {
+export const removeNominatedMovie = (movie: OMDbMovie, dispatch: any) => {
   dispatch({
     type: 'REMOVE_NOMINATED_MOVIE_START'
   })
@@ -72,7 +72,7 @@ export const removeNominatedMovie = (movie: IMovie, dispatch: any) => {
   try {
     dispatch({
       type: 'REMOVE_NOMINATED_MOVIE_SUCCESS',
-      payload: movie.id,
+      payload: movie.imdbID,
     })
   } catch (err) {
     dispatch({

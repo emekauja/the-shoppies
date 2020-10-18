@@ -41,3 +41,10 @@ export interface IMovieProps {
   notimateMovieAction:(state: IState, dispatch: any, movie: OMDbMovie) => IAction
   nominees: Array<OMDbMovie>
 }
+
+export interface INominatedProps {
+  movies: Array<OMDbMovie>
+  store: {state: IState, dispatch: any}
+  removeNominatedMovie:(movie: OMDbMovie, dispatch: any) => void
+  nominees: Array<OMDbMovie>
+}
