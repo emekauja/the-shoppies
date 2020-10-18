@@ -4,6 +4,7 @@ import { fetchDataAction, setSearchFilter, notimateMovieAction } from './Actions
 //import { MovieItems } from './MovieItems'
 import { /* OMDbMovie, */ IMovieProps } from './interfaces'
 import { MovieGrid } from './MovieGrid'
+import NominatedPage from './NominatedPage'
 
 
 
@@ -34,7 +35,8 @@ function HomePage() {
     store: { state, dispatch }
   }
     return (
-      <section className="search">
+      <React.Suspense fallback="loading">
+              <section className="search">
       <form>
         <input
           type="text"
@@ -49,7 +51,9 @@ function HomePage() {
           <h4>Results for: {`"${queryValue}"`}</h4>
           <MovieGrid {...props} />
         </div>
+        <NominatedPage />
     </section>
+      </React.Suspense>
     );
 }
 

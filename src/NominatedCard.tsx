@@ -9,7 +9,7 @@ import { OMDbMovie } from './interfaces'
   movies: Array<OMDbMovie>
 } */
 
-export const NominatedCard = (props: any): Array<JSX.Element> | any => {
+ const NominatedCard = (props: any): Array<JSX.Element> | any => {
   const {movies, removeNominatedMovie, store} = props
   const  {/* state, */ dispatch} = store
 
@@ -48,3 +48,5 @@ export const NominatedCard = (props: any): Array<JSX.Element> | any => {
       </section>
         ))
 }
+
+export default NominatedCard

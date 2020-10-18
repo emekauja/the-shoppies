@@ -1,6 +1,7 @@
 import React from 'react';
 //import axios from 'axios';
 import './App.css';
+import { Link } from '@reach/router'
 //import { SeachBar } from './SeachBar';
 //import { /* Movie, */ OMDbMovie } from './interfaces'
 //import { MovieGrid } from './MovieGrid' 
@@ -66,6 +67,7 @@ function App(props: any): JSX.Element {
 
   return (
     <React.Fragment>
+      <Link to='/nominated'>Nominations</Link>
       {props.children}
     </React.Fragment>
   );

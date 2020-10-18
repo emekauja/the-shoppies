@@ -3,8 +3,6 @@ import { Store } from './Store'
 import { /* fetchDataAction, setSearchFilter, */ removeNominatedMovie } from './Actions'
 //import { MovieItems } from './MovieItems'
 import { /* OMDbMovie, */ INominatedProps } from './interfaces'
-import { MovieGrid } from './MovieGrid'
-
 
 
 //interface HomePageProps {}
@@ -20,7 +18,7 @@ function NominatedPage() {
 
   
   const props: INominatedProps = {
-    movies: state.movieList,
+    movies: state.nominees,
     removeNominatedMovie,
     nominees: state.nominees,
     store: { state, dispatch }
