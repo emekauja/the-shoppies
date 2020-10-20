@@ -49,5 +49,5 @@ export const MovieGrid = (props: any): Array<JSX.Element> | any => {
           </button>
         </section>
       </section>
-        ))
+   ))
 }

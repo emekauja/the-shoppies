@@ -5,6 +5,7 @@ import { fetchDataAction, setSearchFilter, notimateMovieAction } from './Actions
 import { /* OMDbMovie, */ IMovieProps } from './interfaces'
 import { MovieGrid } from './MovieGrid'
 import NominatedPage from './NominatedPage'
+import { SearchBar } from './SearchBar'
 
 
 
@@ -18,16 +19,15 @@ function HomePage() {
   //const movies: Array<OMDbMovie> = state.movieList
   //const nominatedMovies = state.nominees
 
-  const handleSearchChange = (evt: any) => {
-    const { value } = evt.target
-    dispatch(setSearchFilter(value))
-  }
-
   useEffect(() => {
     fetchDataAction(queryValue, dispatch)
   }, [dispatch, queryValue])
 
-  
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    const { value } = event.target
+    dispatch(setSearchFilter(value))
+  }
+
   const props: IMovieProps = {
     movies: state.movieList,
     notimateMovieAction,
@@ -35,24 +35,32 @@ function HomePage() {
     store: { state, dispatch }
   }
     return (
-      <React.Suspense fallback="loading">
-              <section className="search">
-      <form>
-        <input
-          type="text"
-          className="form-control"
-          placeholder="search movies"
-          value={queryValue}
-          onChange={handleSearchChange}
-          autoFocus
-        />
-      </form>
-      <div className="results">
-          <h4>Results for: {`"${queryValue}"`}</h4>
-          <MovieGrid {...props} />
-        </div>
-        <NominatedPage />
-    </section>
+      <React.Suspense fallback="loading...">
+        <section className="search">
+          <form>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="search movies"
+              value={queryValue}
+              onChange={handleSearchChange}
+              autoFocus
+            />
+          </form>
+          <SearchBar query={queryValue} getQuery={handleSearchChange} />
+          <div className="results">
+            <h4>Results for: {`"${queryValue}"`}</h4>
+            {
+              state.isLoading
+              ? (<p style={{
+                fontSize: "30px",
+                color: "#c1c1c1",
+              }}>Loading...</p>)
+              :  (<MovieGrid {...props} />)
+              }
+          </div>
+          <NominatedPage />
+        </section>
       </React.Suspense>
     );
 }

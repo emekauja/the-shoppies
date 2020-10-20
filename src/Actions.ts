@@ -71,7 +71,7 @@ export const removeNominatedMovie = (movie: OMDbMovie, dispatch: any) => {
 
   try {
     dispatch({
-      type: 'REMOVE_NOMINATED_MOVIE_SUCCESS',
+      type: 'REMOVE_NOMINEE',
       payload: movie.imdbID,
     })
   } catch (err) {

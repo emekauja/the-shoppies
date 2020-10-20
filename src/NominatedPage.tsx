@@ -24,12 +24,15 @@ function NominatedPage() {
     store: { state, dispatch }
   }
     return (
-      <section className="search">
-      <div className="results">
-        <h2>Nominations</h2>
-          <NominatedCard {...props} />
-        </div>
-    </section>
+      <React.Suspense fallback="loading...">
+        <section className="search">
+          <div className="results">
+            <h2>Nominations</h2>
+            <NominatedCard {...props} />
+          </div>
+        </section>
+      </React.Suspense>
+
     );
 }
 
