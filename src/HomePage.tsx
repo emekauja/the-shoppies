@@ -12,12 +12,8 @@ import { SearchBar } from './SearchBar'
 //interface HomePageProps {}
 
 function HomePage() {
-  //const { fetchDataAction, setSearchFilter } = actions
-
   const { state, dispatch } = React.useContext(Store)
   const queryValue: string = state.queryValue
-  //const movies: Array<OMDbMovie> = state.movieList
-  //const nominatedMovies = state.nominees
 
   useEffect(() => {
     fetchDataAction(queryValue, dispatch)
@@ -37,16 +33,6 @@ function HomePage() {
     return (
       <React.Suspense fallback="loading...">
         <section className="search">
-          <form>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="search movies"
-              value={queryValue}
-              onChange={handleSearchChange}
-              autoFocus
-            />
-          </form>
           <SearchBar query={queryValue} getQuery={handleSearchChange} />
           <div className="results">
             <h4>Results for: {`"${queryValue}"`}</h4>

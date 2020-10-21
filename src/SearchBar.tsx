@@ -6,13 +6,6 @@ interface SearchBarProps {
 }
 
 export const SearchBar: React.FC<SearchBarProps> = ({ query, getQuery }) => {
-  //const [movieTitle, setMovieTitle] = useState<string>('') 
-
-/*   const onChange = (q: string) => {
-
-    setMovieTitle(q)
-    getQuery(q)
-  } */
 
   return (
       <section className="search">

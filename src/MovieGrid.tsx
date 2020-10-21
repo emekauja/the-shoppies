@@ -11,17 +11,17 @@ import { OMDbMovie } from './interfaces'
 
 export const MovieGrid = (props: any): Array<JSX.Element> | any => {
   const {movies, notimateMovieAction, nominees, store} = props
-  const  {/* state, */ dispatch} = store
+  const  {state, dispatch} = store
+  const nominations = state.nominees
 
-/*   const handleNominate = (evt: any) => {
-    evt.preventDefault()
+  const handleNomination = (movie:OMDbMovie) => {
     movie["nominated"] = true
-    if (nominatedMovies.length === 5) {
-      alert("Maximum number of nominations added!")
+    if (nominations.length === 5) {
+
     } else {
-      setNominatedMovie(movie, dispatch)
+      notimateMovieAction(dispatch, movie)
     }
-  } */
+  }
 
     return movies.map((movie: OMDbMovie) => (
       <section key={movie.imdbID} className="episode-box">
@@ -38,10 +38,7 @@ export const MovieGrid = (props: any): Array<JSX.Element> | any => {
             type="button" 
             disabled={movie.nominated ? true : false}
             className={movie.nominated ? "" : "nominate"}
-            onClick={() => {
-              notimateMovieAction(dispatch, movie)
-              movie["nominated"] = true 
-              }}
+            onClick={() => handleNomination(movie)}
           >
             {nominees.includes(movie) ? 
             'Nominated' : 

@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './index.scss';
 import App from './App';
-import {StoreProvider} from './Store'
+import { StoreProvider } from './Store'
 import { Router, RouteComponentProps } from '@reach/router'
 import HomePage from './HomePage';
 import NominatedPage from './NominatedPage';
@@ -21,4 +21,3 @@ ReactDOM.render(
     </StoreProvider>,
   document.getElementById('root')
 );
-
