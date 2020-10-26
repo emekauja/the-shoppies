@@ -3,6 +3,7 @@ import { Store } from './Store'
 import { /* fetchDataAction, setSearchFilter, */ removeNominatedMovie } from './Actions'
 //import { MovieItems } from './MovieItems'
 import { /* OMDbMovie, */ INominatedProps } from './interfaces'
+import Spinner from './ui/Spinner'
 
 
 //interface HomePageProps {}
@@ -28,7 +29,7 @@ function NominatedPage() {
         <section className="search">
           <div className="results">
             <h2>Nominations</h2>
-            <NominatedCard {...props} />
+            {state.isLoading ? <Spinner /> : <NominatedCard {...props} />}
           </div>
         </section>
       </React.Suspense>

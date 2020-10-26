@@ -6,6 +6,7 @@ import { /* OMDbMovie, */ IMovieProps } from './interfaces'
 import { MovieGrid } from './MovieGrid'
 import NominatedPage from './NominatedPage'
 import { SearchBar } from './SearchBar'
+import Spinner from './ui/Spinner'
 
 
 
@@ -34,19 +35,16 @@ function HomePage() {
       <React.Suspense fallback="loading...">
         <section className="search">
           <SearchBar query={queryValue} getQuery={handleSearchChange} />
-          <div className="results">
+        </section>
+        <div className="results">
             <h4>Results for: {`"${queryValue}"`}</h4>
             {
               state.isLoading
-              ? (<p style={{
-                fontSize: "30px",
-                color: "#c1c1c1",
-              }}>Loading...</p>)
-              :  (<MovieGrid {...props} />)
+              ? <Spinner />
+              : <MovieGrid {...props} />
               }
           </div>
           <NominatedPage />
-        </section>
       </React.Suspense>
     );
 }

@@ -24,16 +24,19 @@ export const MovieGrid = (props: any): Array<JSX.Element> | any => {
   }
 
     return movies.map((movie: OMDbMovie) => (
-      <section key={movie.imdbID} className="episode-box">
-        <img 
-          src={movie.Poster} 
-          alt={`${movie.Title}`} 
-        />
-        <div className="">{movie.Title}</div>
-        <section>
-          <div>
-            Year: {movie.Year} 
-          </div>
+      <section key={movie.imdbID} className="movie-container">
+        <div className="movie-box block-inner">
+          <img 
+            src={movie.Poster} 
+            alt={`${movie.Title}`} 
+            className="box__img"
+          />
+          <section>
+          <div className="">{movie.Title}</div>
+            <div>
+              Year: {movie.Year} 
+            </div>
+          </section>
           <button 
             type="button" 
             disabled={movie.nominated ? true : false}
@@ -44,7 +47,7 @@ export const MovieGrid = (props: any): Array<JSX.Element> | any => {
             'Nominated' : 
             'Nominate' }
           </button>
-        </section>
+        </div>
       </section>
    ))
 }
